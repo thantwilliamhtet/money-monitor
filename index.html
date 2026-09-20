@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Money Monitor</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app">
+  <header>
+    <div>
+      <p class="eyebrow">PERSONAL FINANCE</p>
+      <h1>Money Monitor</h1>
+      <p class="subtitle">Track your money month by month.</p>
+    </div>
+    <button id="clearAllBtn" class="ghost danger" type="button">Clear all</button>
+  </header>
+
+  <section class="summary-grid" aria-label="Money summary">
+    <article class="card balance-card">
+      <span>Current Balance</span>
+      <strong id="balance">0 MMK</strong>
+    </article>
+    <article class="card">
+      <span>Total Income</span>
+      <strong id="income">0 MMK</strong>
+    </article>
+    <article class="card">
+      <span>Total Expenses</span>
+      <strong id="expense">0 MMK</strong>
+    </article>
+  </section>
+
+  <main class="content-grid">
+    <section class="card form-card">
+      <h2>Add Transaction</h2>
+      <form id="transactionForm">
+        <label>
+          Amount (MMK)
+          <input id="amount" type="number" min="1" step="1" placeholder="50000" required>
+        </label>
+        <label>
+          Type
+          <select id="type">
+            <option value="income">Income</option>
+            <option value="expense">Expense</option>
+          </select>
+        </label>
+        <label>
+          Category
+          <select id="category">
+            <option>Salary</option>
+            <option>Food</option>
+            <option>Transport</option>
+            <option>Shopping</option>
+            <option>Bills</option>
+            <option>Education</option>
+            <option>Entertainment</option>
+            <option>Health</option>
+            <option>Other</option>
+          </select>
+        </label>
+        <label>
+          Date
+          <input id="date" type="date" required>
+        </label>
+        <label>
+          Note
+          <input id="note" type="text" maxlength="80" placeholder="Optional note">
+        </label>
+        <button class="primary" type="submit">Add Transaction</button>
+        <p id="message" class="message" aria-live="polite"></p>
+      </form>
+    </section>
+
+    <section class="card">
+      <div class="section-heading">
+        <div>
+          <h2>Monthly Overview</h2>
+          <p>See income, spending and remaining money by month.</p>
+        </div>
+        <select id="monthSelect" aria-label="Select month"></select>
+      </div>
+      <div id="monthlyList" class="monthly-list"></div>
+    </section>
+  </main>
+
+  <section class="card history-card">
+    <div class="section-heading">
+      <div>
+        <h2>Transaction History</h2>
+        <p id="historyCount">0 transactions</p>
+      </div>
+      <select id="historyFilter" aria-label="Filter transactions">
+        <option value="all">All transactions</option>
+        <option value="income">Income only</option>
+        <option value="expense">Expenses only</option>
+      </select>
+    </div>
+    <div id="transactions" class="transactions"></div>
+  </section>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
